@@ -21,20 +21,22 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/tic-tac-toe")
 public class GameRestController {
 
-    @Autowired
+    final
     OptimalPlayService optimalPlayService;
+
+    public GameRestController(OptimalPlayService optimalPlayService) {
+        this.optimalPlayService = optimalPlayService;
+    }
 
     @GetMapping("/play")
     public ResponseEntity<?> getPathInfo(@RequestParam("board") String userPlay, HttpSession session, HttpServletRequest req) {
 
-        log.info("Controller Borad : {}", userPlay);
+        log.info("Controller Board : {}", userPlay);
         char [] plays = userPlay.toCharArray();
 
         BoardObject boardObject = new BoardObject(plays);
 
-        boolean valid = TicTacToeUtil.isValidPlay(plays);
-
-        if(!valid) {
+        if(!TicTacToeUtil.isValidPlay(plays)) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

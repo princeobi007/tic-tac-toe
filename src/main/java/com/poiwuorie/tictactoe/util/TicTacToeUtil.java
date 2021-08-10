@@ -8,16 +8,17 @@ import java.util.List;
 
 @Slf4j
 public class TicTacToeUtil {
-    private static HashMap<Integer, List<int[]>> winMaps = new HashMap<>();
+    private static final HashMap<Integer, List<int[]>> winMaps = new HashMap<>();
+    private static final HashMap<Integer, List<int []>> forkMaps = new HashMap<>();
 
-    private static int[] win1 = { 0, 1, 2 };
-    private static int[] win2 = { 3, 4, 5 };
-    private static int[] win3 = { 6, 7, 8 };
-    private static int[] win4 = { 0, 3, 6 };
-    private static int[] win5 = { 1, 4, 7 };
-    private static int[] win6 = { 0, 4, 8 };
-    private static int[] win7 = { 2, 4, 6 };
-    private static int[] win8 = { 2, 5, 8 };
+    private static final int[] win1 = { 0, 1, 2 };
+    private static final int[] win2 = { 3, 4, 5 };
+    private static final int[] win3 = { 6, 7, 8 };
+    private static final int[] win4 = { 0, 3, 6 };
+    private static final int[] win5 = { 1, 4, 7 };
+    private static final int[] win6 = { 0, 4, 8 };
+    private static final int[] win7 = { 2, 4, 6 };
+    private static final int[] win8 = { 2, 5, 8 };
 
     static {
         List<int []> zeroIndexWin = new ArrayList<>();
@@ -53,7 +54,7 @@ public class TicTacToeUtil {
         List<int []> fiveIndexWin = new ArrayList<>();
         fiveIndexWin.add(win2);
         fiveIndexWin.add(win8);
-        winMaps.put(5, fourIndexWin);
+        winMaps.put(5, fiveIndexWin);
 
         List<int []> sixIndexWin = new ArrayList<>();
         sixIndexWin.add(win3);
@@ -73,6 +74,29 @@ public class TicTacToeUtil {
         winMaps.put(8, eightIndexWin);
 
 
+        List<int []> forkPositionZero = new ArrayList<>();
+        forkPositionZero.add(win1);
+        forkPositionZero.add(win6);
+        forkPositionZero.add(win4);
+        forkMaps.put(0,forkPositionZero);
+
+        List<int []> forkPositionTwo = new ArrayList<>();
+        forkPositionTwo.add(win1);
+        forkPositionTwo.add(win7);
+        forkPositionTwo.add(win8);
+        forkMaps.put(2,forkPositionTwo);
+
+        List<int []> forkPositionSix = new ArrayList<>();
+        forkPositionZero.add(win3);
+        forkPositionZero.add(win7);
+        forkPositionZero.add(win4);
+        forkMaps.put(6,forkPositionSix);
+
+        List<int []> forkPositionEight = new ArrayList<>();
+        forkPositionEight.add(win3);
+        forkPositionEight.add(win8);
+        forkPositionEight.add(win6);
+        forkMaps.put(8,forkPositionEight);
     }
 
     public static boolean isValidPlay(char[] board) {
@@ -99,6 +123,19 @@ public class TicTacToeUtil {
         }
 
         return winMaps.get(position);
+    }
+
+    public static  List<int[]> getForkPlays(int position) {
+
+        if(position < 0 || position > 8) {
+            throw new RuntimeException("Position out of bounds");
+        }
+
+        if(position == 0 || position == 2|| position ==6 || position ==8){
+            return forkMaps.get(position);
+        }
+
+        return null;
     }
 
 }
