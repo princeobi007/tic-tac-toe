@@ -148,7 +148,7 @@ public class OptimalPlayServiceImpl implements OptimalPlayService {
         // TODO Auto-generated method stub
         if (playObject.getPlays()[4] == ' ') {
             playObject.getPlays()[4] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         }
         return playObject;
     }
@@ -157,16 +157,16 @@ public class OptimalPlayServiceImpl implements OptimalPlayService {
     public BoardObject oppositeCorner(BoardObject playObject) {
         if (playObject.getPlays()[0] == 'x' && playObject.getPlays()[8] == ' ') {
             playObject.getPlays()[8] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         } else if (playObject.getPlays()[8] == ' ' && playObject.getPlays()[0] == ' ') {
             playObject.getPlays()[0] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         } else if (playObject.getPlays()[6] == ' ' && playObject.getPlays()[2] == ' ') {
             playObject.getPlays()[2] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         } else if (playObject.getPlays()[2] == ' ' && playObject.getPlays()[6] == ' ') {
             playObject.getPlays()[6] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         }
         return playObject;
     }
@@ -176,16 +176,16 @@ public class OptimalPlayServiceImpl implements OptimalPlayService {
         // TODO Auto-generated method stub
         if (playObject.getPlays()[0] == ' ') {
             playObject.getPlays()[0] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         } else if (playObject.getPlays()[2] == ' ') {
             playObject.getPlays()[2] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         } else if (playObject.getPlays()[6] == ' ') {
             playObject.getPlays()[6] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         } else if (playObject.getPlays()[8] == ' ') {
             playObject.getPlays()[8] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         }
         return playObject;
     }
@@ -195,16 +195,16 @@ public class OptimalPlayServiceImpl implements OptimalPlayService {
         // TODO Auto-generated method stub
         if (playObject.getPlays()[1] == ' ') {
             playObject.getPlays()[1] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         } else if (playObject.getPlays()[5] == ' ') {
             playObject.getPlays()[5] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         } else if (playObject.getPlays()[7] == ' ') {
             playObject.getPlays()[7] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         } else if (playObject.getPlays()[3] == ' ') {
             playObject.getPlays()[3] = 'o';
-            playObject.setHasPlayedTurn(true);
+            playObject.setTurnPlayed(true);
         }
         return playObject;
     }
@@ -241,7 +241,7 @@ public class OptimalPlayServiceImpl implements OptimalPlayService {
         for (int position : winPlay) {
             if (playObject.getPlays()[position] == ' ') {
                 playObject.getPlays()[position] = 'o';
-                playObject.setHasPlayedTurn(true);
+                playObject.setTurnPlayed(true);
                 break;
             }
         }

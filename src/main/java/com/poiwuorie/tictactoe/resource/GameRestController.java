@@ -42,25 +42,25 @@ public class GameRestController {
 
         boardObject = optimalPlayService.checkWin(boardObject);
 
-        if(!boardObject.getHasPlayedTurn()) {
+        if(!boardObject.isTurnPlayed()) {
             boardObject = optimalPlayService.blockWin(boardObject);
         }
-        if(!boardObject.getHasPlayedTurn()) {
+        if(!boardObject.isTurnPlayed()) {
             boardObject = optimalPlayService.createFork(boardObject);
         }
-        if(!boardObject.getHasPlayedTurn()) {
+        if(!boardObject.isTurnPlayed()) {
             boardObject = optimalPlayService.blockFork(boardObject);
         }
-        if(!boardObject.getHasPlayedTurn()) {
+        if(!boardObject.isTurnPlayed()) {
             boardObject = optimalPlayService.centerPlay(boardObject);
         }
-        if(!boardObject.getHasPlayedTurn()) {
+        if(!boardObject.isTurnPlayed()) {
             boardObject = optimalPlayService.oppositeCorner(boardObject);
         }
-        if(!boardObject.getHasPlayedTurn()) {
+        if(!boardObject.isTurnPlayed()) {
             boardObject = optimalPlayService.emptyCorner(boardObject);
         }
-        if(!boardObject.getHasPlayedTurn()) {
+        if(!boardObject.isTurnPlayed()) {
             boardObject = optimalPlayService.emptySide(boardObject);
         }
 
